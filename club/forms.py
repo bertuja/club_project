@@ -14,7 +14,7 @@ class BeneficioForm(forms.ModelForm):
 class CategoriaBeneficioForm(forms.ModelForm):
     class Meta:
         model = CategoriaBeneficio
-        fields = ['nombre']  # o ['nombre', 'descripcion'] si ese campo existe
+        fields = ['nombre']  
 
 class BusquedaBeneficiosForm(forms.Form):
     termino_busqueda = forms.CharField(
