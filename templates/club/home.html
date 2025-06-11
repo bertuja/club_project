@@ -1,6 +1,20 @@
 {% extends 'club/base.html' %}
 
 {% block content %}
-<h1>Bienvenido al Club de Beneficios</h1>
-<p>Sistema de gestión de socios y beneficios</p>
+  <h1>Bienvenido al Club de Beneficios</h1>
+  <p>Sistema de gestión de socios y beneficios</p>
+
+  <h2>Beneficios disponibles</h2>
+  <ul>
+    {% for beneficio in beneficios %}
+      <li>
+        <strong>{{ beneficio.nombre }}</strong>: {{ beneficio.descripcion }}
+        {% if beneficio.categoria %}
+          <br><em>Categoría: {{ beneficio.categoria.nombre }}</em>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>No hay beneficios cargados aún.</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

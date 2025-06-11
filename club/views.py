@@ -3,7 +3,9 @@ from .models import Socio, Beneficio, CategoriaBeneficio
 from .forms import SocioForm, BeneficioForm, CategoriaBeneficioForm, BusquedaBeneficiosForm
 
 def home(request):
-    return render(request, 'club/home.html')
+    beneficios = Beneficio.objects.all()
+    return render(request, 'club/home.html', {'beneficios': beneficios})
+
 
 def registrar_socio(request):
     if request.method == 'POST':
