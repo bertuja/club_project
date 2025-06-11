@@ -1,0 +1,27 @@
+{% extends 'club/base.html' %}
+
+{% block title %}Beneficios Disponibles{% endblock %}
+
+{% block content %}
+<h2>Beneficios Disponibles</h2>
+
+<form method="get" class="form-group">
+    {{ form.as_p }}
+    <button type="submit" class="btn">Buscar</button>
+</form>
+
+{% for beneficio in beneficios %}
+<div class="beneficio-card">
+    <h3><a href="{% url 'detalle_beneficio' beneficio.pk %}">{{ beneficio.nombre }}</a></h3>
+    <p><strong>Categoría:</strong> {{ beneficio.categoria.nombre }}</p>
+    <p><strong>Proveedor:</strong> {{ beneficio.proveedor }}</p>
+    <p><strong>Descuento:</strong> <span class="descuento">{{ beneficio.descuento }}%</span></p>
+    <p>{{ beneficio.descripcion|truncatewords:30 }}</p>
+    {% if beneficio.fecha_expiracion %}
+    <p><strong>Válido hasta:</strong> {{ beneficio.fecha_expiracion|date:"d/m/Y" }}</p>
+    {% endif %}
+</div>
+{% empty %}
+<p>No se encontraron beneficios con los criterios de búsqueda.</p>
+{% endfor %}
+{% endblock %}

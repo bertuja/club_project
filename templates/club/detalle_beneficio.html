@@ -1,0 +1,19 @@
+{% extends 'club/base.html' %}
+
+{% block title %}{{ beneficio.nombre }}{% endblock %}
+
+{% block content %}
+<div class="beneficio-detail">
+    <h2>{{ beneficio.nombre }}</h2>
+    <p><strong>Categoría:</strong> {{ beneficio.categoria.nombre }}</p>
+    <p><strong>Proveedor:</strong> {{ beneficio.proveedor }}</p>
+    <p><strong>Descuento:</strong> <span class="descuento">{{ beneficio.descuento }}%</span></p>
+    {% if beneficio.fecha_expiracion %}
+    <p><strong>Válido hasta:</strong> {{ beneficio.fecha_expiracion|date:"d/m/Y" }}</p>
+    {% endif %}
+    <h3>Descripción:</h3>
+    <p>{{ beneficio.descripcion }}</p>
+    
+    <a href="{% url 'lista_beneficios' %}">Volver a la lista</a>
+</div>
+{% endblock %}
