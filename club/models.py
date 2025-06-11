@@ -2,7 +2,7 @@ from django.db import models
 
 class CategoriaBeneficio(models.Model):
     nombre = models.CharField(max_length=100)
-    descripcion = models.TextField(blank=True, null=True)  # ← ahora es opcional
+    descripcion = models.TextField(blank=True, null=True)  # ← es opcional
 
     def __str__(self):
         return self.nombre
